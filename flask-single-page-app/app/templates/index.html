@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Results from DB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+        .container {
+            max-width: 500px;
+            padding-top: 20px;
+        }
+        input {
+            max-width: 250px;
+        }
+        select {
+            max-width: 250px;
+        }
+        .avatar {
+            max-width: 150px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h1>Results from DB</h1>
+        <br>
+        <form role="form" method="post" onsubmit="return false;">
+            <div class="form-group">
+                <select name="variables" size="1" >
+                    {%for row in columns: %}
+                    <option> {{row[1]}}
+                    {%endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Find a developer!</button>
+            <button type="submit" class="btn btn-success" id="try-again">Try a different location</button>
+        </form>
+        <br>
+        <div id="results"></div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src={{ url_for('static', filename='main.js') }}></script>
+  </body>
+</html>
